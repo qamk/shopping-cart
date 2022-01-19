@@ -3,20 +3,18 @@ import Button from './Button';
 
 const Cart = (props) => {
 
+  const { clearCart, ...itemMethods } = props.methods;
+
   let itemsToRender = <p>
     No Items in the cart. Add some and make me money!!!
   </p>
 
-  if (props.cartItems) {
+  if (props.cartItems.length > 0) {
     itemsToRender = props.cartItems.map((item) => {
       console.log('cart item:');
       console.log(item);
       return(<>
-          <CartItem details={item}>
-            <Button onClick={props.removeItem.bind(this, item)}>
-              Remove me!
-            </Button>
-          </CartItem>
+          <CartItem details={item} {...itemMethods} />
         </>)
     })
   }
@@ -26,7 +24,7 @@ const Cart = (props) => {
       <aside>
         <h2>My cart</h2>
         { itemsToRender }
-        <Button onClick={props.clearCart}>
+        <Button onClick={clearCart.clearCart}>
           Clear Cart
         </Button>
       </aside>

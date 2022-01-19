@@ -1,14 +1,28 @@
+import Item from "./Item";
+import Button from "./Button";
+import QuantityControls from "./QuantityControls";
+
 const CartItem = (props) => {
+  const controls = {
+    add: {
+      method: props.changeQuantity, label: '+', methodKey: 'inc', itemKey: props.details.key
+    },
+    subtract: {
+      method: props.changeQuantity, label: '-', methodKey: 'dec', itemKey: props.details.key
+    }
+  };
   console.log('Cart Item');
   console.log(props);
   console.log('---------------')
   return(
     <>
-      <li>Added item: {props.details.name}</li>
-      <li>There are {props.details.quantity} of me</li>
-      {
-        props.children
-      }
+      <Item details={props.details}>
+        <p>Currently {props.details.quantity} in cart</p>
+        <QuantityControls  controls = {controls} />
+        <Button onClick={props.removeItem.bind(this, props.details.key)}>
+          Remove me!
+        </Button>
+      </Item>
     </>
   )
 }
