@@ -1,11 +1,14 @@
 [
   { "name": "Apple", "key": 1, "quantity": 1,
-    "imgData": {"src": "","alt": "an item from our shop"}
+    "imgData": {"src": "","alt": "an item from our shop"},
+    "description": "A delicious piece of fruit... mmmmm"
   },
   { "name": "Banana", "key": 2, "quantity": 1,
-    "imgData": {"src": "","alt": "an item from our shop"}
+    "imgData": {"src": "","alt": "an item from our shop"},
+    "description": "A delicious piece of fruit... mmmmm"
   },
   { "name": "Cherry", "key": 3, "quantity": 1,
-    "imgData": {"src": "","alt": "an item from our shop"}
+    "imgData": {"src": "","alt": "an item from our shop"},
+    "description": "A delicious piece of fruit... mmmmm"
   }
 ]
