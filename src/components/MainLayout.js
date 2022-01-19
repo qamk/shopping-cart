@@ -47,15 +47,15 @@ const MainLayout = () => {
 
   const toggleHomePage = () => homePage ? sethomePage(false) : sethomePage(true)
 
-  const removeItem = (item) => {
+  const removeItem = (itemKey, index = null, loadedClone = null) => {
     console.log('Removing item...')
-    console.log(item);
+    console.log(itemKey);
     console.log('------------------');
 
-    const index = extractItemIndex(cartItems, item.key)
+    index = index ? index : extractItemIndex(cartItems, itemKey)
 
     try {
-      let newItems = clone(cartItems)
+      let newItems = loadedClone ? loadedClone : clone(cartItems)
       newItems.splice(index, 1)
       setCartItems(newItems);
     } catch(error) {
@@ -64,16 +64,40 @@ const MainLayout = () => {
       console.log('---------------------')
     }
   }
+
+  const increaseQuantity = (value) => value + 1;
+
+  const decreaseQuantity = (value) => value - 1;
+
+  const changeQuantity = (itemKey, methodKey) => {
+    const change = { 'dec': decreaseQuantity, 'inc': increaseQuantity }[methodKey];
+    console.log('Changing quantity.......');
+    console.log('Method is: ' + methodKey);
+    console.log('Item key is: ' + itemKey);
+    const index = extractItemIndex(cartItems, itemKey);
+
+    let newItems = clone(cartItems);
+    newItems[index].quantity = change(newItems[index].quantity);
+
+    if (newItems[index].quantity === 0) {
+      removeItem(null, index, newItems)
+      return;
+    }
+    setCartItems(newItems)
+    console.log('---------------')
+  }
   
   const toggleCart = () => {
     cartVisibility ? setCartVisibility(false) : setCartVisibility(true);
   }
-  
-  let cart = <Cart clearCart={clearCart}/>;
 
-  if (cartItems.length > 0) {
-    cart = <Cart cartItems={cartItems} clearCart={clearCart} removeItem={removeItem}/>
-  }
+  const cartMethods = { clearCart, removeItem, changeQuantity }
+  
+  let cart = <Cart methods={cartMethods} cartItems = {cartItems}/>;
+
+  // if (cartItems.length > 0) {
+  //   cart = <Cart methods={cartMethods}/>
+  // }
 
   return(
     <>
