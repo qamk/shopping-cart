@@ -11,12 +11,9 @@ const CartItem = (props) => {
       method: props.changeQuantity, label: '-', methodKey: 'dec', itemKey: props.details.key
     }
   };
-  console.log('Cart Item');
-  console.log(props);
-  console.log('---------------')
   return(
     <>
-      <Item details={props.details}>
+      <Item details={props.details} key={props.details.id}>
         <p>Currently {props.details.quantity} in cart</p>
         <QuantityControls  controls = {controls} />
         <Button onClick={props.removeItem.bind(this, props.details.key)}>

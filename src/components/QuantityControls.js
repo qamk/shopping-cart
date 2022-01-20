@@ -4,10 +4,10 @@ const QuantityControls = (props) => {
   const controls = props.controls;
 
 
-  console.log('Quant. Control: props');
-  console.log(props);
-  console.log('Quant. Control: controls');
-  console.log(controls);
+  // console.log('Quant. Control: props');
+  // console.log(props);
+  // console.log('Quant. Control: controls');
+  // console.log(controls);
 
   let qcButtons;
 

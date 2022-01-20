@@ -11,8 +11,8 @@ const Cart = (props) => {
 
   if (props.cartItems.length > 0) {
     itemsToRender = props.cartItems.map((item) => {
-      console.log('cart item:');
-      console.log(item);
+      // console.log('cart item:');
+      // console.log(item);
       return(<>
           <CartItem details={item} {...itemMethods} />
         </>)
