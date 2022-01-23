@@ -1,7 +1,6 @@
 const ImageBox = ({alt, src = ''}) => {
   return(
-    <figure>
-      From Image Box:
+    <figure className="figure media-image">
       <img src={src} alt={alt} />
     </figure>
   )

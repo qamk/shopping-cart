@@ -21,9 +21,11 @@ const Cart = (props) => {
 
   return(
     <>
-      <aside>
+      <aside className="container is-narrow-1">
         <h2>My cart</h2>
-        { itemsToRender }
+        <div>
+          { itemsToRender }
+        </div>
         <Button onClick={clearCart.clearCart}>
           Clear Cart
         </Button>

@@ -132,7 +132,7 @@ const Main = () => {
     setCartItems([]);
   }
 
-  const removeItem = (itemKey, index = null, loadedClone = null) => {
+  const removeCartItem = (itemKey, index = null, loadedClone = null) => {
     // console.log('Removing item...')
     // console.dir(itemKey);
     // console.log('------------------');
@@ -166,7 +166,7 @@ const Main = () => {
     newItems[index].quantity = change(newItems[index].quantity);
 
     if (newItems[index].quantity === 0) {
-      removeItem(null, index, newItems)
+      removeCartItem(null, index, newItems)
       return;
     }
     setCartItems(newItems)
@@ -177,25 +177,27 @@ const Main = () => {
     cartVisibility ? setCartVisibility(false) : setCartVisibility(true);
   }
 
-  const cartMethods = { clearCart, removeItem, changeQuantity }
+  const cartMethods = { clearCart, removeCartItem, changeQuantity }
   
   let cart = <Cart methods={cartMethods} cartItems = {cartItems}/>;
 
   return(
-    <>
-      <h1>Main Layout</h1>
+    <section className="section is-medium">
+      <div className="title-container">
+        <h1 className="title is-1">Products page</h1>
+      </div>
       <header>
         <Button onClick={toggleCart}>
           Show Cart
         </Button>
       </header>
-      <section>
+      <section className="container is-wide-1">
         { cartVisibility
         ? cart 
         : null }
         <ProductList addToCart={addToCart}/>
       </section>
-    </>
+    </section>
   )
 };
 

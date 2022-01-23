@@ -13,12 +13,11 @@ const Item = (props) => {
 
   return (
     <>
-      From Item:
-      <article>
+      <div className="mb-1 media card">
         <ImageBox {...imgData}/>
         <InfoBox details={ itemData }/>
           {props.children}
-      </article>
+      </div>
     </>
   );
 };

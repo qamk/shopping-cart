@@ -5,8 +5,8 @@ const ProductList = (props) => {
   let inventory = grabInventory(props.addToCart);
   return(
     <>
-      <h2>Available Products!</h2>
-      <article>
+      <h2 className="title is-2 text-centre">Available Products!</h2>
+      <article className="grid-column-2">
         {inventory}
       </article>
     </>

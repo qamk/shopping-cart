@@ -5,7 +5,7 @@
 
 // const DEFAULT_STYLE = 'btn -is-primary';
 
-const Button = (props) => {
+const Button = ({styles = [], children, onClick}) => {
 
   // const clickHandler = () => {
   //   console.log('WHY U CLICKIN THINGS');
@@ -17,9 +17,11 @@ const Button = (props) => {
   //   return (validStyles.length === 0 ? DEFAULT_STYLE : validStyles.join(' '));
   // };
 
+  const validStyles = [...styles, 'button'].join(' ');
+
   return(
-    <button onClick={props.onClick}>
-      { props.children }
+    <button className={validStyles} onClick={onClick}>
+      { children }
     </button>
   )
 }

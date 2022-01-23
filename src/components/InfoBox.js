@@ -2,13 +2,12 @@
 const InfoBox = ({ details }) => {
   return(
     <div>
-      From Info Box:
       <div>
-        <h3>{details.name}</h3>
+        <h3 className="media-header title is-5 text-centre">{details.name}</h3>
       </div>
 
       <div>
-        <p>{details.description}</p>
+        <p className="media-content content">{details.description}</p>
       </div>
     </div>
   )

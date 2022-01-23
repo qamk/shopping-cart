@@ -1,7 +1,7 @@
 import Button from "./Button";
 
-const QuantityControls = (props) => {
-  const controls = props.controls;
+const QuantityControls = ({ controls }) => {
+  // const controls = props.controls;
 
 
   // console.log('Quant. Control: props');
@@ -14,7 +14,7 @@ const QuantityControls = (props) => {
   if (controls) {
     qcButtons = Object.entries(controls).map(([_, control]) => {
       return(
-        <Button onClick={control.method.bind(this, control.itemKey, control.methodKey)}>
+        <Button styles={['mr-1', 'is-small']} onClick={control.method.bind(this, control.itemKey, control.methodKey)}>
           { control.label }
         </Button>
       )

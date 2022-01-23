@@ -4,12 +4,14 @@ import Item from "./Item";
 
 const ProductItem = (props) => {
   return(
-    <Item details={props.details}>
-      {/* <QuantityControls /> */}
-      <Button onClick={() => props.addToCart(props.details)}>
-        Add to Cart
-      </Button>
-    </Item>
+    <>
+      <Item details={props.details}>
+        {/* <QuantityControls /> */}
+        <Button styles={['media-footer is-primary']} onClick={() => props.addToCart(props.details)}>
+          Add to Cart
+        </Button>
+      </Item>
+    </>
   )
 }
 

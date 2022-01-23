@@ -13,12 +13,20 @@ const CartItem = (props) => {
   };
   return(
     <>
-      <Item details={props.details} key={props.details.id}>
+      <Item details={props.details} key={props.details.key}>
         <p>Currently {props.details.quantity} in cart</p>
-        <QuantityControls  controls = {controls} />
-        <Button onClick={props.removeItem.bind(this, props.details.key)}>
-          Remove me!
-        </Button>
+        <div className="media-footer flex-centre-h">
+          <div className="mr-1">
+            <QuantityControls controls = {controls} />
+          </div>
+          <Button onClick={() => {
+            // console.log('Remove button clicked.... Removing...');
+            // console.dir(props.details);
+            props.removeCartItem(props.details.key)
+          }}>
+            Remove me!
+          </Button>
+        </div>
       </Item>
     </>
   )
