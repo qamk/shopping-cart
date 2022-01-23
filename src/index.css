@@ -1,3 +1,16 @@
+* {
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+  font-size: 18px;
+  /* outline: 1px solid red !important; */
+
+  --primary: #52b4c5;
+  --link: #3574df;
+  --primary-light: #aee9f3;
+  --primary-dark: #439af3;
+}
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -10,4 +23,278 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+.m-0a {
+  margin: 0 auto;
+}
+
+.mt-1 {
+  margin-top: 20px;
+}
+
+.mt-2 {
+ margin-top: 15px;
+}
+
+.mt-3 {
+  margin-top: 10px;
+}
+
+.mb-1 {
+  margin-bottom: 20px;
+}
+
+.mb-2 {
+  margin-bottom: 15px;
+}
+
+.ml-1 {
+  margin-left: 15px;
+}
+
+.ml-2 {
+  margin-left: 12px;
+}
+
+.mr-1 {
+  margin-right: 15px;
+}
+
+
+.flex-centre-h {
+  display: flex;
+  justify-content: center;
+}
+
+.flex-around-h {
+  display: flex;
+  justify-content: space-around;
+}
+
+@media screen and (min-width: 930px) {
+
+}
+
+.media {
+  display: grid;
+  grid-template-columns: 128px 2fr 1fr;
+  grid-template-areas:
+  "image  header  header"
+  ".....  content content"
+  "footer footer  .......";
+}
+
+.media-image {
+  grid-area: image;
+}
+
+.media-header {
+  grid-area: header;
+}
+
+.media-footer {
+  grid-area: footer;
+}
+
+.media-left::after, .media-right::after,
+.media-left::before, .media-right::before {
+  display: table;
+  content: "";
+}
+
+.media-left::after, .media-right::after {
+  clear: both;
+}
+
+
+.column-container {
+  max-width: 100%;
+  padding: 1.25rem;
+}
+
+.grid-container-small {
+  max-width: 800px;
+}
+
+.grid-column-2 {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+}
+
+.abs-top-right {
+  position: absolute;
+  right: 10%;
+  top: 20%;
+}
+
+*[class|="container"], *[class~="container"] {
+  padding: .6rem;
+  margin: 0 auto;
+}
+
+.container.is-narrow-1 {
+  max-width: 780px;
+}
+
+.container.is-narrow-2 {
+  max-width: 560px;
+}
+
+.container.is-narrow-3 {
+  max-width: 400px;
+}
+
+.container.is-narrow-width-4 {
+  width: 350px;
+}
+
+.container.is-wide-2 {
+  max-width: 980px;
+}
+
+.title-container {
+  padding: .2rem;
+  border-bottom: 1px solid #444;
+  margin-bottom: .2rem;
+}
+
+.content-container {
+}
+
+.brand {
+}
+
+/* .brand:active {
+  border: 3px groove var(--primary);
+} */
+
+.navbar {
+  margin: 1.5rem;
+  max-width: 90%;
+}
+
+.navbar-item {
+  float: left;
+  margin: 0 .3rem;
+  padding: .5rem;
+}
+
+.bg-primary-light {
+  background-color: var(--primary-light);
+}
+
+.bd-primary-dark {
+  border: 1px solid var(--primary-dark);
+}
+
+.links {
+  color: var(--link);
+}  
+
+.button {
+  padding: 8px;
+  text-decoration-line: none;
+  max-width: 256px;
+  border-radius: 2px;
+  background-color: #ccc;
+  border: .5px solid #aaa;
+  transition: all 75ms 5ms linear;
+}
+
+.button.is-small {
+  width: 60px;
+}
+
+.button:hover, .button:active {
+  transform: scale(1.02);
+}
+
+.button.is-primary {
+  color: black;
+  background-color: var(--primary);
+  border-color: black;
+}
+
+.card {
+  height: 250px;
+  border: 1px solid #fff;
+  border-radius: 3px;
+  box-shadow: 1px 1px 2px 2px #ddd;
+  padding: 1rem .5rem;
+}
+
+.card:focus, .card:target, .card:hover {
+  box-shadow: 1px 1px 2px 2px #aca10a;
+}
+
+/* aside {
+  position: absolute;
+  z-index: 1;
+  background-color: white;
+} */
+
+.section {
+  width: 97%;
+  max-height: 700px;
+  margin: 0 auto;
+}
+
+.section.is-medium {
+  height: 550px;
+}
+
+.section.is-small {
+  height: 370px;
+}
+
+.title {
+  font-size: 2.75rem;
+}
+
+.title.is-1 {
+  font-size: 3.25rem;
+}
+
+.title.is-2 {
+  font-size: 3rem;
+}
+
+.title.is-3 {
+  font-size: 2.5rem;
+}
+
+.title.is-4 {
+  font-size: 2.25rem;
+}
+
+.title.is-5 {
+  font-size: 2rem;
+}
+
+.content {
+  font-size: 1.2rem;
+  padding: .5rem 0;
+}
+
+.content.is-large {
+  font-size: 1.3rem;
+}
+
+.content.is-medium {
+  font-size: 1.1rem;
+}
+
+.content.is-small {
+  font-size: .9rem;
+}
+
+.text-centre {
+  text-align: center;
+}
+
+.figure {
+  width: 128px;
+  height: 128px;
+  border: 1px solid #444;
 }
