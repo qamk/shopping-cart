@@ -14,7 +14,7 @@ const QuantityControls = ({ controls }) => {
   if (controls) {
     qcButtons = Object.entries(controls).map(([_, control]) => {
       return(
-        <Button styles={['mr-1', 'is-small']} onClick={control.method.bind(this, control.itemKey, control.methodKey)}>
+        <Button styles={['m-1', 'is-small']} onClick={control.method.bind(this, control.itemKey, control.methodKey)}>
           { control.label }
         </Button>
       )

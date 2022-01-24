@@ -6,7 +6,7 @@ const ProductList = (props) => {
   return(
     <>
       <h2 className="title is-2 text-centre">Available Products!</h2>
-      <article className="grid-column-2">
+      <article className="grid-auto">
         {inventory}
       </article>
     </>
