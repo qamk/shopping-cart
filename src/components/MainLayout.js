@@ -1,10 +1,17 @@
 import Navbar from "./Navbar"
-import { Outlet } from "react-router"
+import { Outlet, Link } from "react-router-dom"
 
 const MainLayout = () => {
   return(
     <section className="section">
       <header>
+        <div className="banner">
+          <div className="banner-container">
+            <Link to="/">
+              Fruit Mania
+            </Link>
+          </div>
+        </div>
         <Navbar />
       </header>
       <main>
