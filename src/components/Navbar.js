@@ -48,7 +48,7 @@ const Navbar = () => {
     <nav className="navbar">
       { mobileButton }
       <ul className={style}>
-        <NavLink to="/shop">
+        <NavLink to="/shopping-cart/shop">
           <li className="navbar-item">Fruits</li>
         </NavLink>
         {/* <NavLink to="#">
@@ -57,7 +57,7 @@ const Navbar = () => {
         <NavLink to="#">
           <li className="navbar-item">???????</li>
         </NavLink> */}
-        <NavLink to="/cart">
+        <NavLink to="/shopping-cart/cart">
           <li className="navbar-item">
             My Cart
           </li>

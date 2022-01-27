@@ -7,8 +7,8 @@ const MainLayout = () => {
       <header>
         <div className="banner">
           <div className="banner-container">
-            <Link to="/">
-              Fruit Mania
+            <Link to="/shopping-cart">
+              Fruit
             </Link>
           </div>
         </div>
