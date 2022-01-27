@@ -1,14 +1,18 @@
 [
-  { "name": "Apple", "key": 1, "quantity": 1,
-    "imgData": {"src": "","alt": "an item from our shop"},
+  { "name": "Apple", "key": 1, "quantity": 1, "cost": 10,
+    "imgData": { "src": "","alt": "an item from our shop" },
+    "description": "People from all over the world come to try our luxurious and tangy apples."
+  },
+  { "name": "Banana", "key": 2, "quantity": 1, "cost": 20,
+    "imgData": { "src": "","alt": "an item from our shop" },
     "description": "A delicious piece of fruit... mmmmm"
   },
-  { "name": "Banana", "key": 2, "quantity": 1,
-    "imgData": {"src": "","alt": "an item from our shop"},
+  { "name": "Cherry", "key": 3, "quantity": 1, "cost": 40,
+    "imgData": { "src": "","alt": "an item from our shop" },
     "description": "A delicious piece of fruit... mmmmm"
   },
-  { "name": "Cherry", "key": 3, "quantity": 1,
-    "imgData": {"src": "","alt": "an item from our shop"},
+  { "name": "Durian", "key": 4, "quantity": 1, "cost": 80,
+    "imgData": { "src": "", "alt": "an item from our shop" },
     "description": "A delicious piece of fruit... mmmmm"
   }
 ]

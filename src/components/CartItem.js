@@ -14,11 +14,9 @@ const CartItem = (props) => {
   return(
     <>
       <Item details={props.details} key={props.details.key}>
-        <p>Currently {props.details.quantity} in cart</p>
+      <p className="tooltip">Currently {props.details.quantity} in cart</p>
         <div className="media-footer flex-around-h">
           <Button onClick={() => {
-            // console.log('Remove button clicked.... Removing...');
-            // console.dir(props.details);
             props.removeCartItem(props.details.key)
           }}>
             Remove me!

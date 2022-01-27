@@ -20,7 +20,7 @@ const Navbar = () => {
   
   
   const updateUseMobileNav = () => {
-    if (window.innerWidth <= 430) {
+    if (window.innerWidth <= 500) {
       setIsMobile(true);
     } else {
       setIsMobile(false)
@@ -39,30 +39,30 @@ const Navbar = () => {
   if (isMobile) {
     style = 'navbar-list invisible';
     mobileButton =
-    <Button styles={['hamburger-button']} onClick={openMenu} >
+    <Button styles={['mobile-button']} onClick={openMenu} addButtonClass={false}>
       Menu
     </Button>;
   }
 
   return (
     <nav className="navbar">
+      { mobileButton }
       <ul className={style}>
         <NavLink to="/shop">
-          <li className="navbar-item"> Shop </li>
+          <li className="navbar-item">Fruits</li>
+        </NavLink>
+        {/* <NavLink to="#">
+          <li className="navbar-item">Vegetables</li>
         </NavLink>
         <NavLink to="#">
-          <li className="navbar-item">Dead link</li>
-        </NavLink>
-        <NavLink to="#">
-          <li className="navbar-item">Dead link</li>
-        </NavLink>
+          <li className="navbar-item">???????</li>
+        </NavLink> */}
         <NavLink to="/cart">
           <li className="navbar-item">
             My Cart
           </li>
         </NavLink>
       </ul>
-     { mobileButton }
     </nav>
   );
 };
