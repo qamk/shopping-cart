@@ -13,6 +13,16 @@ function App() {
           <Route index element={ <Home /> }></Route>
           <Route path="shop" element={<Main />}></Route>
           <Route path="cart" element={ <Cart /> }></Route>
+          <Route 
+          path="*"
+          element={
+            <>
+              <div className="title-container">
+                <h2 className="title is-1">Whoopsie.......... You seem lost..........</h2>
+              </div>
+              <p className="content">I think you should start by clicking on the big title or navigation bar above!</p>
+            </>
+          }></Route>
         </Route>
       </Routes>
     </BrowserRouter>
