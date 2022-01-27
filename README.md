@@ -1,70 +1,33 @@
-# Getting Started with Create React App
+# Shopping Cart
+This is a **Single Page Application** (SPA) made with Reactjs. The project uses [create-react-app](./create-react-app-info.md) and [react-router-dom](https://reactrouter.com/).
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+The app uses react-router to map some routes to corresponding react components. All routes are wrapped in the `MainLayout.js` layout. 
 
-## Available Scripts
+Created only with functional components and React Hooks.
 
-In the project directory, you can run:
+## How to run
+To run this application either click on the github pages link or do the following:
+1. Clone the repo with `git clone git@github.com:qamk/shopping-cart.git`
+2. Enter the directory with `cd shopping-cart`
+3. Run the development server with `npm start` or `npm run start`
 
-### `npm start`
+## Features
+As described before, users can add items to their cart, change the quantity of the items in their cart, remove items and clear the cart.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+By leveraging react-router's `Link` component, components are mounted/unmounted by react-router.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+The app is responsive and has a mobile menu and mobile-friendly layout.
 
-### `npm test`
+## To improve
+The main thing I would add is some additional feedback when a button has been clicked: some component that mounts and unmounts after some interval (likely using *promises* to achieve this).
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+I would also like to use the `Page.js` component to represent product pages.
 
-### `npm run build`
+## Discussion
+The creation of the core functionality of this app was fairly straightforward.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Refactoring my components to import helper methods (rather than defining in the components' file) made it *much* easier to extend or restructure the application. For example, decoupling the `Cart.js` component from `Main.js` in order to give `Cart.js` its own route and logic rather than relying on `props` to pass the logic/properties from `Main` to `Cart`, making both components much easier to understand.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Furthermore, making use of data in a `.json` file made it much easier to alter the inventory and mimic a response from some API call.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Really, this was a good project for developing my skills in React and becoming acquainted with react-router!
