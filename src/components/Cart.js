@@ -1,16 +1,23 @@
 import CartItem from './CartItem';
 import Button from './Button';
 import { useEffect, useState } from 'react';
-import { clone, extractItemIndex } from '../assets/helpers/helperMethods';
+import { clone, extractItemIndex, sumController } from '../assets/helpers/helperMethods';
 
-const Cart = (props) => {
+const Cart = () => {
 
   const [myCart, setMyCart] = useState([]);
+  const [cartCount, setCartCount] = useState(null);
+  const [cartTotal, setCartTotal] = useState(null);
 
   useEffect(() => {
     const startingCart = JSON.parse(sessionStorage.getItem('cart')) || []
     setMyCart(startingCart);
   }, [])
+
+  useEffect(() => {
+    setCartCount(sumController({list: myCart, type: 'quantity'}));
+    setCartTotal(sumController({list: myCart, type: 'cost'}));
+  }, [myCart])
 
   const increaseQuantity = (value) => value + 1;
 
@@ -18,9 +25,6 @@ const Cart = (props) => {
 
   const changeQuantity = (itemKey, methodKey) => {
     const change = { 'dec': decreaseQuantity, 'inc': increaseQuantity }[methodKey];
-    // console.log('Changing quantity.......');
-    // console.log('Method is: ' + methodKey);
-    // console.log('Item key is: ' + itemKey);
     const index = extractItemIndex(myCart, itemKey);
 
     let newItems = clone(myCart);
@@ -32,13 +36,9 @@ const Cart = (props) => {
     }
     sessionStorage.setItem('cart', JSON.stringify(newItems));
     setMyCart(newItems)
-    // console.log('---------------')
   }
 
   const removeCartItem = (itemKey, index = null, loadedClone = null) => {
-    // console.log('Removing item...')
-    // console.dir(itemKey);
-    // console.log('------------------');
 
     index = index ? index : extractItemIndex(myCart, itemKey)
 
@@ -61,14 +61,12 @@ const Cart = (props) => {
 
   const itemMethods = { changeQuantity, removeCartItem };
 
-  let itemsToRender = <p>
+  let itemsToRender = <p className="content">
     No Items in the myCart. Add some and make me money!!!
   </p>
 
   if (myCart.length > 0) {
     itemsToRender = myCart.map((item) => {
-      // console.log('Cart item:');
-      // console.log(item);
       return(<>
           <CartItem details={item} {...itemMethods} key={item.key} />
         </>)
@@ -79,7 +77,8 @@ const Cart = (props) => {
     <>
       <aside className="container">
         <header className="title-container">
-          <h2 className="title is-2">My Cart</h2>
+          <h2 className="title is-2">My Cart ({cartCount})</h2>
+          <p className="content">Total: £{cartTotal}</p>
         </header>
         <div className="grid-auto mt-2">
           { itemsToRender }
