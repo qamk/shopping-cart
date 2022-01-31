@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import ProductList from './ProductList';
+import FeedbackLayout from './FeedbackLayout';
 import { clone, extractItemIndex, isFalsy, cartValuesIdentical } from '../assets/helpers/helperMethods';
 
 const Main = () => {
@@ -8,13 +9,13 @@ const Main = () => {
   useEffect(() => {
     const storedCart = JSON.parse(sessionStorage.getItem('cart'));
     const sameAsCart = cartValuesIdentical(cartItems, storedCart);
-    const falsyStorage = isFalsy(storedCart);
-    if (falsyStorage) {
+    const emptyStorage = isFalsy(storedCart);
+    if (emptyStorage) {
       sessionStorage.setItem('cart', JSON.stringify(cartItems));
     } else if (cartItems.length === 0) {
-        setCartItems(storedCart);
+      setCartItems(storedCart);
     } else if (!sameAsCart)  {
-        sessionStorage.setItem('cart', JSON.stringify(cartItems));
+      sessionStorage.setItem('cart', JSON.stringify(cartItems));
     }
   }, [cartItems])
 
@@ -28,19 +29,25 @@ const Main = () => {
     } else {
       newItems = [...cartItems, item];
     }
-    sessionStorage.setItem('cart', JSON.stringify(newItems))
     setCartItems(newItems);
+    // setDisplayFeedback(true);
   }
 
   return(
-    <section className="section is-medium">
+    <section className="section">
       <header>
         <div className="title-container">
           <h1 className="title is-1">Products page</h1>
         </div>
       </header>
       <section className="container is-wide-1">
-      <ProductList addToCart={addToCart}/>
+        { console.log('Main.... calling render') }
+        {cartItems.length > 0 
+        ? <FeedbackLayout cart={cartItems}/>
+        : null
+      }
+      { console.log('----------------------') }
+        <ProductList addToCart={addToCart}/>
       </section>
     </section>
   )
