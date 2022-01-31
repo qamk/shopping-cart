@@ -43,7 +43,7 @@ const isFalsy = (value) => {
       falsy = (value.length === 0)
       break;
     case "object":
-      falsy = (value.keys().length === 0)
+      falsy = (Object.keys(value).length === 0)
       break
     default:
       falsy = ( (value === undefined) || (value === null))
