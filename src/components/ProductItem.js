@@ -5,7 +5,7 @@ import Item from "./Item";
 const ProductItem = (props) => {
   return(
     <>
-      <Item details={props.details}>
+      <Item details={props.details} key={props.details.key}>
         {/* <QuantityControls /> */}
         <Button styles={['media-footer is-primary']} onClick={() => props.addToCart(props.details)}>
           Add to Cart
