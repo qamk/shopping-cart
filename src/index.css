@@ -11,6 +11,7 @@
   --primary-dark: #439af3;
   --accent-one: #e7ae32;
   --accent-two: #0da068;
+  --accent-three: #9656e0;
   --warning: #e6db44;
   --warning-dark: #aca10a;
 }
@@ -207,7 +208,6 @@ a:visited {
   margin: 0 .2rem;
   padding: .5rem .2rem;
   min-height: 60px;
-  border: 1px groove black;
 }
 
 .navbar-list {
@@ -254,7 +254,7 @@ a:visited {
 
   .mobile-button {
     display: block;
-    width: 100vw;
+    width: 97vw;
     height: 50px;
   }
 
@@ -286,7 +286,7 @@ a:visited {
   border-radius: 4px;
   background-color: #ccc;
   border: .5px solid #aaa;
-  transition: all 75ms 5ms linear;
+  transition: all 75ms 5ms ease-out;
 }
 
 .button.is-small {
@@ -299,9 +299,14 @@ a:visited {
   background-color: var(--primary);
 }
 
-.button:hover, .button:active, .button:focus {
+.button:hover, .button:focus {
   border: 3px solid var(--accent-one);
 }
+
+.button:active {
+  opacity: .75;
+}
+
 .card {
   height: 300px;
   border: 1px solid #fff;
@@ -315,7 +320,15 @@ a:visited {
 }
 
 .tooltip {
-  position: absolute;
+  position: fixed;
+  /* display: flex;
+  flex-direction: ; */
+  bottom: 5px;
+  left: 5px;
+  padding: .5rem;
+  color: #fff;
+  z-index: 2;
+  background-color: var(--accent-three);
 }
 
 /* aside {
