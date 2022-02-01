@@ -1,10 +1,13 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import ProductList from './ProductList';
 import FeedbackLayout from './FeedbackLayout';
 import { clone, extractItemIndex, isFalsy, cartValuesIdentical } from '../assets/helpers/helperMethods';
 
 const Main = () => {
   const [cartItems, setCartItems] = useState([]);
+  const [showFeedback, setShowFeedback] = useState(false);
+  const mostRecentItem = useRef(null);
+  const message = "You have added " + mostRecentItem.current + " to the cart";
 
   useEffect(() => {
     const storedCart = JSON.parse(sessionStorage.getItem('cart'));
@@ -29,24 +32,28 @@ const Main = () => {
     } else {
       newItems = [...cartItems, item];
     }
+    mostRecentItem.current = item.name;
     setCartItems(newItems);
+    setShowFeedback(true);
     // setDisplayFeedback(true);
   }
 
+  const unmountFeedback = () => {
+    setShowFeedback(false);
+  }
+
   return(
-    <section className="section">
+    <section>
       <header>
         <div className="title-container">
           <h1 className="title is-1">Products page</h1>
         </div>
       </header>
       <section className="container is-wide-1">
-        { console.log('Main.... calling render') }
-        {cartItems.length > 0 
-        ? <FeedbackLayout cart={cartItems}/>
-        : null
-      }
-      { console.log('----------------------') }
+        { showFeedback 
+          ? <FeedbackLayout cart={cartItems} unmountCallback={unmountFeedback} message = {message}/>
+          : null
+        }
         <ProductList addToCart={addToCart}/>
       </section>
     </section>
