@@ -83,7 +83,7 @@ const Cart = () => {
         <div className="grid-auto mt-2">
           { itemsToRender }
         </div>
-        <Button onClick={clearCart}>
+        <Button styles={['is-transparent', 'is-danger']} onClick={clearCart}>
           Clear My Cart
         </Button>
       </aside>
