@@ -1,40 +1,39 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Feedback from "./Feedback";
 import { cartValuesIdentical } from "../assets/helpers/helperMethods";
 
 
-const FeedbackLayout = (props) => {
+const FeedbackLayout = ({cart, unmountCallback, message}) => {
   const [prevCart, setPrevCart] = useState([]);
   const [feedbackQueue, setFeedbackQueue] = useState([]);
+  const intervalRef = useRef(null);
   
   useEffect(() => {
-    const intervalId =
-      setInterval(() => {
-        setFeedbackQueue(fbq => fbq.slice(0, -1));
+
+    intervalRef.current =
+    setInterval(() => {
+      setFeedbackQueue(fbq => fbq.slice(0, -1));
       }, 4000)
-
-    return () => clearInterval(intervalId)
-  }, [])
-
+      
+    }, [])
+    
   useEffect(() => {
-
-    if (!cartValuesIdentical(props.cart, prevCart)) {
-      const feedback = [<Feedback delay={4}/>, ...feedbackQueue]
-      setPrevCart(props.cart);
+    
+    if (!cartValuesIdentical(cart, prevCart)) {
+      const feedback = [<Feedback message={message}/>, ...feedbackQueue]
+      setPrevCart(cart);
       setFeedbackQueue(feedback);
     }
-  }, [props.cart, prevCart, feedbackQueue])
-  
-  if (feedbackQueue.length > 0) {
-    console.log('Prepended FeedbackQueue');
-    console.log(feedbackQueue);
-  }
+  }, [cart, prevCart, feedbackQueue, message])
 
+  if ( (feedbackQueue.length === 0) && cartValuesIdentical(cart, prevCart)) {
+    clearInterval(intervalRef);
+    unmountCallback()
+  }
   
-  console.log('feedback layout --------------------------------')
   return(
-    <div className="tooltip">
-      { cartValuesIdentical(props.cart, prevCart) 
+    <div className="feedback-temp">
+      { cartValuesIdentical(cart, prevCart) 
         ? feedbackQueue
         : null
       }
